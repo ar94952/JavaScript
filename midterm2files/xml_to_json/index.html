@@ -1,0 +1,63 @@
+<!---------------------------
+	Anthony Rivera
+	anthonyriv2@gmail.com
+	CIS 114 OL
+	index.html
+	Midterm 2
+	XML to JSON
+	11/4/2017--------------->
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<title>Anthony Rivera</title>
+	<link href="main.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+	<script>
+		$(document).ready(function() {
+			// alert("yes");
+			var j = [];
+			$.ajax({
+			    url: "team.json",
+			    dataType: "json",
+			    success: function(response) {
+					
+					$.each(response.teammembers, function(item) {
+						$("#team").append("<h3>" +
+							response.teammembers[item].name + "</h3>" +
+							response.teammembers[item].title + "<br>" +
+							response.teammembers[item].bio + "<br>");
+					});
+				},
+			});
+		});
+		// this script doesn't work on some browsers
+	</script>
+	</head>
+	<body>
+	<header></header>
+	
+	  
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="aboutus.html">About Us</a></li>
+				<li><a href="solutions.html">Solutions</a></li>
+				<li><a href="support.html">Support</a></li>
+				<li><a href="contactus.html">Contact Us</a></li>
+			</ul>
+		</nav>
+	
+	  
+	
+	<main>
+		<h2>The Vecta Corp. Management Team</h2>
+		<div id="team"></div>
+	</main>
+	
+	  
+	<footer></footer>
+	</body>
+</html>

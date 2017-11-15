@@ -1,0 +1,78 @@
+<!--
+Anthony Rivera
+anthonyriv2@my.smccd.edu
+CIS 117 OL
+index.html
+Assignment#5 
+10/21/2017
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Anthony Rivera</title>
+<link rel="stylesheet" href="reservation.css">
+<script src="library_fields.js"></script>
+<script src="library_validate.js"></script>
+<script src="library_validate_form.js"></script>
+<script src="reservation.js"></script>
+</head>
+  
+<body>
+<main>
+   <h1>Reservation Request</h1>
+   <form action="response.html" method="get"
+   name="reservation_form" id="reservation_form">
+<fieldset>
+   <legend>General Information</legend>
+   <label for="arrival_date">Arrival date:</label>
+   <input type="text" name="arrival_date" id="arrival_date">
+<span id="arrival_date_error">&nbsp;</span><br>
+   <label for="nights">Nights:</label>
+   <input type="text" name="nights" id="nights">
+<span id="nights_error">&nbsp;</span><br>
+   <label>Adults:</label>
+   <select name="adults" id="adults">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>                        
+   </select><br>
+   <label>Children:</label>
+   <select name="children" id="children">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>                        
+   </select><br>    
+</fieldset>
+<fieldset>
+   <legend>Preferences</legend>
+   <label>Room type:</label>
+       <input type="radio" name="room" id="standard" value="standard" checked>Standard      
+       <input type="radio" name="room" id="business" value="business">Business
+       <input type="radio" name="room" id="suite" value="suite">Suite<br>
+  
+   <label>Bed type:</label>
+       <input type="radio" name="bed" id="king" value="king" checked>King
+       <input type="radio" name="bed" id="double" value="double">Double Double<br>
+       <input type="checkbox" name="smoking" id="smoking" value="smoking">Smoking<br>
+</fieldset>      
+<fieldset>
+       <legend>Contact Information</legend>
+       <label for="name">Name:</label>
+       <input type="text" name="name" id="name">
+<span id="name_error">&nbsp;</span><br>
+   <label for="email">Email:</label>
+   <input type="text" name="email" id="email">
+<span id="email_error">&nbsp;</span><br>
+       <label for="phone">Phone:</label>
+       <input type="text" name="phone" id="phone">
+<span id="phone_error">&nbsp;</span><br>
+</fieldset>
+<input type="button" id="submit_request" value="Submit Reservation">
+<input type="button" id="clear" value="Clear"><br>
+   </form>
+</main>
+</body>
+</html>

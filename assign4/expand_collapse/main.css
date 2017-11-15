@@ -1,0 +1,37 @@
+article, aside, figure, figcaption, footer, header, nav, section {
+    display: block;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 87.5%;
+	width: 650px;
+	margin: 0 auto;
+	border: 3px solid blue;
+}
+section {
+	padding: 15px 25px;
+}
+h1 { 
+	font-size: 150%;
+}
+h2 {
+	font-size: 120%;
+	padding: .25em 0 .25em 25px;
+}
+div.hide {
+	display: none;
+}
+ul {
+	padding-left: 45px;
+}
+li {
+	padding-bottom: .4em;
+}
+p, a {
+	padding-bottom: .4em;
+	padding-left: 25px;
+}

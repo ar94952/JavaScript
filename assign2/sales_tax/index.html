@@ -1,0 +1,46 @@
+<!--
+Anthony Rivera
+anthonyriv2@my.smccd.edu
+CIS 114 OL
+Index.html
+Sales Tax Assignment
+9/7/2017
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Anthony Rivera</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="sales_tax.js"></script>
+</head>
+<!--
+    It wasn't calculating at all, so I changed some items in the body to make it work.
+-->
+<body>
+<div>
+	<h1>Sales Tax Calculator</h1>
+	<p>Enter the values below and click "Calculate".</p>
+	<div id="taxCalc">
+		<label for="subtotal">Subtotal:</label>
+		<input type="text" id="subtotal" /><br />
+
+		<label for="taxRate">Tax Rate:</label>
+		<input type="text" id="taxRate" /><br />
+
+		<label for="salesTax">Sales Tax:</label>
+		<input type="text" id="salesTax" disabled="disabled" /><br />
+
+		<label for="total">Total:</label>
+		<input type="text" id="total" disabled="disabled" /><br />
+
+		<label>&nbsp;</label>
+		<input type="button" id="calculate" value="Calculate" /><br />
+		
+		<label>&nbsp;</label>
+		<input type="button" id="clear" value="Clear" /><br />
+	</div>
+</div>
+</body>
+</body>
+</html>

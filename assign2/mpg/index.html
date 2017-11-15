@@ -1,0 +1,61 @@
+<!--
+Anthony Rivera
+anthonyriv2@my.smccd.edu
+CIS 114 OL
+Index.html
+Assignment 4-1
+9/7/2017
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anthony Rivera</title>
+    <link rel="stylesheet" href="mpg.css" />
+    <script>
+        var $ = function (id) {
+            return document.getElementById(id);
+        }
+        var calculateMpg = function () {
+            var inputOK = true;
+            var miles = $("miles").value;
+            if (miles.match(/^\s*[0-9]+(\.[0-9]*)?\s*$/) == null) {
+                alert("Miles must be a number");
+                inputOK = false;
+            }
+            var gallons = $("gallons").value;
+            if (gallons.match(/^\s*[0-9]+(\.[0-9]*)?\s*$/) == null) {
+                alert("Gallons must be a number");
+                inputOK = false;
+            }
+            if (inputOK) {
+                var mpg = miles / gallons;
+                $("mpg").value = mpg.toFixed(1);
+            }
+        }
+        var clear = function () {
+            $("miles").value = $("gallons").value = $("mpg").value = "";
+        }
+        window.onload = function () {
+            $("calculate").onclick = calculateMpg;
+            $("clear").onclick = clear;
+            $("miles").ondblclick = clear;
+            $("miles").focus();
+        }
+    </script>
+</head>
+<body>
+    <section>
+        <h1>Calculate Miles Per Gallon</h1>
+        <label for="miles">Miles Driven:</label>
+        <input type="text" id="miles" /><br />
+        <label for="gallons">Gallons of Gas Used:</label>
+        <input type="text" id="gallons" /><br />
+        <label for="mpg">Miles Per Gallon: </label>
+        <input type="text" id="mpg" disabled />
+        <label>&nbsp</label>
+        <input type="button" id="calculate" value="Calculate MPG" />
+        <input type="button" id="clear" value="Clear Entries" />
+        <br />
+    </section>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to generate random Lotto numbers.</p>
+
+<button onclick="myFunction()">Quick Pick</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+var firstNumber = Math.round(Math.random() * 47);
+var secondNumber = Math.round(Math.random() * 47);
+var thirdNumber = Math.round(Math.random() * 47);
+var fourthNumber = Math.round(Math.random() * 47);
+var fifthNumber = Math.round(Math.random() * 47);
+var sixthNumber = Math.round(Math.random() * 27); 
+
+
+ if(firstNumber === secondNumber || firstNumber === thirdNumber || 
+    firstNumber === fourthNumber || firstNumber === fifthNumber ||           
+    firstNumber === sixthNumber || firstNumber === 0) {
+      Math.round(Math.random() * 47);
+ } else if(secondNumber === firstNumber || secondNumber === thirdNumber || 
+           secondNumber === fourthNumber || secondNumber === fifthNumber || 
+           secondNumber === sixthNumber || secondNumber === 0) {
+      Math.round(Math.random() * 47);
+} else if (thirdNumber === firstNumber || thirdNumber === secondNumber || 
+           thirdNumber === fourthNumber || thirdNumber === fifthNumber || 
+           thirdNumber === sixthNumber || thirdNumber === 0) {
+      Math.round(Math.random() * 47);
+} else if (fourthNumber === firstNumber || fourthNumber === secondNumber || 
+           fourthNumber === thirdNumber || fourthNumber === fifthNumber || 
+           fourthNumber === sixthNumber || fourthNumber === 0) {
+      Math.round(Math.random() * 47);
+} else if(fifthNumber === firstNumber || fifthNumber === secondNumber || 
+          fifthNumber === thirdNumber || fifthNumber === fourthNumber || 
+          fifthNumber === sixthNumber || fifthNumber === 0){
+      Math.round(Math.random() * 47);
+} else if(sixthNumber === firstNumber || sixthNumber === secondNumber || 
+          sixthNumber === thirdNumber || sixthNumber === fourthNumber || 
+          sixthNumber === fifthNumber || sixthNumber === 0) {
+      Math.round(Math.random() * 27);
+} else {
+      alert(firstNumber + ", " + secondNumber + ", " + thirdNumber + ", " + 
+      fourthNumber + ", " + fifthNumber + ", " + sixthNumber);
+}
+}
+</script>
+
+</body>
+</html>

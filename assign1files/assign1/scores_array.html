@@ -1,0 +1,53 @@
+<!--
+Anthony Rivera
+anthonyriv2@my.smccd.edu
+CIS 114 OL
+scores_array.html
+Assignment 3-2
+08/31/2017
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">	
+    <title>Anthony Rivera</title>
+    <script>
+        var entry;
+        var average;
+        var scores = [];
+        var total = 0;
+        var show = "The test scores:\n";
+		var highestScore = 0;
+        
+        do {
+            entry = prompt("Enter test score\n" +
+                           "Or enter 999 to end entries", 999);
+            entry = parseInt(entry);
+            if (entry >= 0 && entry <= 100) {
+                scores[scores.length] = entry;
+            } else if (entry != 999){
+                alert("Entry must by a valid number from 0 through 100\n" +
+                      "Or enter 999 to end entries");
+            }
+        }
+        while (entry != 999); 
+
+        for (var i = 0; i < scores.length; i++) {
+            total = total + scores[i];       
+            show = show + scores[i] + "\n";  
+			if (scores[i] > highestScore) {
+				highestScore = scores[i];
+			}
+        }
+        
+        average = parseInt(total/scores.length);
+		       		
+		alert(show + "\nAverage score is " + average + "\nHighest score is " + highestScore);
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Thanks for using the Test Scores application!</h1>
+    </main>
+</body>
+</html>

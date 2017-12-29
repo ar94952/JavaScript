@@ -1,0 +1,119 @@
+<!--
+Anthony Rivera
+anthonyriv2@my.smccd.edu
+CIS 114 OL
+Final
+iTunes.html
+12/8/2017
+-->
+<!-----Modified example from personal CodePen dashboard https://codepen.io/ar94952/
+       -Original was written in Pug, converted to standard HTML
+       -Changed language from Japanese to en_us
+       -Added collectionPrice
+       -Changed from trackName to trackcensoredName
+       -Changed from collectionName to collectionSensoredName
+       -Default currency set to US without the need to use 'currency' in search params
+       -Styling and image modification implemented --->
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Anthony Rivera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  
+<div id="app">
+  <div class="l-header">
+        <center><img src="img/iTunes.png" width=75 height=75 ><br /><h1>iTunes Search</h1></center>
+  </div>
+  <main>
+    <!-- Media Types-->
+    <search-form v-bind:media-types="mediaTypes" v-bind:media="media" v-bind:attrs="attrs" v-bind:attr="attr" v-bind:limits="limits" v-bind:limit="limit" v-bind:term="term"></search-form>
+    <!-- Display Results-->
+    <search-results v-bind:is-loading="isLoading" v-bind:is-more-cont="isMoreCont" v-bind:items="items"></search-results>
+  </main>
+</div>
+<!--Search Form Template Obtained from CodePen-->
+<script id="tpl-serch-form" type="text/x-template">
+  <div class="l-search c-group u-cf">
+    <form @submit.prevent="">
+      <div class="c-formItem c-formItem--select">
+        <label for="search-media">Media</label>
+        <select id="search-media" @change="changeValue($event, 'media')">
+          <option v-for="_media in mediaTypes" v-bind:selected="media === _media">{{_media}}</option>
+        </select>
+      </div>
+      <div class="c-formDivider"></div>
+      <div class="c-formItem c-formItem--select">
+        <label for="search-attr">Search Parameters</label>
+        <select id="search-attr" @change="changeValue($event, 'attr')">
+          <option v-for="_attr in attrs" v-bind:selected="attr === _attr">{{_attr}}</option>
+        </select>
+      </div>
+      <div class="c-formDivider"></div>
+      <div class="c-formItem">
+        <label for="search-term">Artist Name</label>
+        <input id="search-term" type="text" placeholder="Enter the characters" @input="changeValue($event, 'term')"/>
+      </div>
+      <div class="c-formDivider"></div>
+      <div class="c-formItem c-formItem--select">
+        <label for="search-limit">Search Limit</label>
+        <select id="search-limit" @change="changeValue($event, 'limit')">
+          <option v-for="_limit in limits" v-bind:selected="limit === _limit">{{_limit}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</script>
+<!-- Display Result Template-->
+<script id="tpl-serch-results" type="text/x-template">
+  <div class="l-results-wrap">
+    <transition name="slideTop-fadeIn" mode="out-in" appear="appear" key="hasItem">
+      <div class="l-results u-cf" v-if="!isLoading">
+        <article class="c-result" v-show="items.results &amp;&amp; items.results.length" v-for="item in items.results" v-bind:key="item.trackId">
+          <div class="c-result__media">
+            <div class="c-result__attr"><span class="c-result__kind" v-if="item.kind">{{item.kind}}</span><span class="c-result__genre" v-if="item.primaryGenreName">{{item.primaryGenreName}}</span></div>
+            <video controls="controls" :poster="item.artworkUrl100">
+              <source :src="item.previewUrl"/>
+            </video>
+          </div>
+          <div class="c-result__header">
+            <!--{{item.trackCensoredName, item.collectionCensoredName, artistViewUrl, collectionViewUrl, artistName-->
+            <h1 class="c-result__trackName"><a :href="item.trackViewUrl" target="_blank">{{item.trackCensoredName}}</a></h1>
+            <p class="c-result__collectionName" v-if="item.collectionName"><a :href="item.collectionViewUrl" target="_blank">{{item.collectionCensoredName}}</a></p>
+            <p class="c-result__artistName"><a :href="item.artistViewUrl" target="_blank" v-if="item.artistViewUrl">{{item.artistName}}</a>
+              <template v-else="v-else">{{item.artistName}}</template>
+            </p>
+          </div>
+          <!-- currency set to USD by default, $ inserted instead-->
+          <div class="c-result__footer u-cf">
+            <div><span class="c-result__trackTime" v-if="item.trackTimeMillis">{{item.trackTimeMillis | showTrackTime}}</span>
+            <a>Track:</a><span class="c-result__price" v-if="item.trackPrice">${{item.trackPrice}}</span><a> Album:</a>
+            <span class="c-result__price" v-if="item.collectionPrice">${{item.collectionPrice}}</span></div>
+          </div>
+        </article>
+        <div class="c-msg-circle c-msg-circle--warn" v-show="!items.results || !items.results.length">No Item</div>
+      </div>
+      <div class="c-msg-circle" v-else="v-else" key="NoItem">
+        <div>Loading...</div>
+      </div>
+    </transition>
+  </div>
+</script>
+<!-- using vue and axios -->
+  <script src='https://unpkg.com/vue@2.4.2'></script>
+<script src='https://unpkg.com/axios@0.16.2/dist/axios.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
